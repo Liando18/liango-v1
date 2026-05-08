@@ -94,7 +94,7 @@ liango/
 ### 1. Clone & Setup
 
 ```bash
-git clone <your-repo-url> my-project
+git clone https://github.com/Liando18/liango-v1.git my-project
 cd my-project
 cp .env.example .env
 # Edit .env with your config
