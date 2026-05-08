@@ -9,7 +9,7 @@ LianGo is a reusable, modular backend boilerplate that speeds up development acr
 ## Tech Stack
 
 | Layer      | Technology                          |
-|------------|-------------------------------------|
+| ---------- | ----------------------------------- |
 | Language   | Go 1.21+                            |
 | Framework  | Gin                                 |
 | ORM        | GORM                                |
@@ -127,12 +127,14 @@ go run main.go
 ## API Endpoints
 
 ### Welcome
+
 ```
 GET /
 → { "message": "Welcome to LianGo version 1.0.0" }
 ```
 
 ### Auth
+
 ```
 POST /api/v1/auth/register   Register new user
 POST /api/v1/auth/login      Login (returns access + refresh token)
@@ -142,6 +144,7 @@ GET  /api/v1/auth/me         Get current user (requires JWT)
 ```
 
 ### Example Resource (requires JWT)
+
 ```
 GET    /api/v1/examples         List all (paginated)
 GET    /api/v1/examples/:id     Get one
@@ -194,16 +197,19 @@ go run cmd/generator/main.go make:crud Product
 ## Adding a New Resource
 
 1. **Generate files:**
+
    ```bash
    go run cmd/generator/main.go make:crud Product
    ```
 
 2. **Register the route** in `app/routes/api.go`:
+
    ```go
    RegisterProductRoutes(v1)
    ```
 
 3. **Add model to migration** in `main.go`:
+
    ```go
    database.Migrate(&models.Product{})
    ```
@@ -214,19 +220,19 @@ go run cmd/generator/main.go make:crud Product
 
 ## Security Features
 
-| Feature               | Implementation                         |
-|-----------------------|----------------------------------------|
-| JWT Auth              | Access token (15m) + Refresh token (7d)|
-| Token Rotation        | Old refresh token revoked on refresh   |
-| Password Hashing      | bcrypt (default cost)                  |
-| Rate Limiting         | 100 req/min per IP                     |
-| CORS                  | Configurable via env                   |
-| Security Headers      | X-Frame-Options, CSP, HSTS, etc.       |
-| IP Whitelist          | Optional via ALLOWED_IPS env           |
-| API Key               | Optional via API_KEY env               |
-| Request Timeout       | 30 seconds global timeout              |
-| Panic Recovery        | Auto-recover with 500 response         |
-| Soft Delete           | All models use GORM soft delete        |
+| Feature          | Implementation                          |
+| ---------------- | --------------------------------------- |
+| JWT Auth         | Access token (15m) + Refresh token (7d) |
+| Token Rotation   | Old refresh token revoked on refresh    |
+| Password Hashing | bcrypt (default cost)                   |
+| Rate Limiting    | 100 req/min per IP                      |
+| CORS             | Configurable via env                    |
+| Security Headers | X-Frame-Options, CSP, HSTS, etc.        |
+| IP Whitelist     | Optional via ALLOWED_IPS env            |
+| API Key          | Optional via API_KEY env                |
+| Request Timeout  | 30 seconds global timeout               |
+| Panic Recovery   | Auto-recover with 500 response          |
+| Soft Delete      | All models use GORM soft delete         |
 
 ---
 
@@ -235,7 +241,7 @@ go run cmd/generator/main.go make:crud Product
 Defined in `app/constants/roles.go`:
 
 | Role   | Permissions                                  |
-|--------|----------------------------------------------|
+| ------ | -------------------------------------------- |
 | admin  | create:any, read:any, update:any, delete:any |
 | editor | create:any, read:any, update:own             |
 | user   | read:own, update:own                         |
@@ -262,4 +268,4 @@ All responses follow this structure:
 
 ---
 
-Made with ❤️ by LianGo
+Developer by Aprilian Gevindo
